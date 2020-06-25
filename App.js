@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Image,
   TextInput,
@@ -19,6 +19,7 @@ import {
   View,
   Text,
   StatusBar,
+  ActivityIndicator
 } from 'react-native';
 
 import logo from "./assets/img/Grupo_1.png";
@@ -30,7 +31,30 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-const App: () => React$Node = () => {
+function App() {
+
+  // Switch - Inicio
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+  // Switch - Fim
+
+  // Variaveis de Login - Inicio
+  const [Celular, setCelular] = useState("");
+  const [Senha, setSenha] = useState("");
+
+  // Variaveis de Login - Fim
+
+  function entrar() {
+    console.log("Celular: "+Celular+"||Senha: "+Senha);
+    if(Celular != "" && Senha != ""){
+      alert("Login Success!!!");
+
+    } else{
+      alert("Login Fail!!!");
+    }
+
+  }
+
   return (
     <>
       <StatusBar barStyle="dark-content"
@@ -40,10 +64,11 @@ const App: () => React$Node = () => {
         <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
 
           <View>
-            <View style={{}}>
-              <Image source={logo} style={{ width: 200, height: 200 }}></Image>
+            <View>
+              <Image source={logo} style={styles.logo}></Image>
             </View>
-            <Text style={{ textAlign: "center", color: "#2B337D", fontSize: 45, fontFamily: "All Star Resort" }}>Driving</Text>
+            <Text style={styles.logofont}>Driving</Text>
+            <ActivityIndicator size="large" color="#0000ff" style={{display: "none"}} />
           </View>
 
         </View>
@@ -53,26 +78,30 @@ const App: () => React$Node = () => {
           <View style={{ marginBottom: 95 }}>
             <View style={{ alignItems: "center" }}>
               <View style={{ padding: 10 }}>
-                <TextInput style={{ width: 217, height: 41, borderRadius: 100, backgroundColor: "#FFFFFF", color: "#2B337D" }} placeholder="Celular" placeholderTextColor="#2B337D">
-                </TextInput>
+                <TextInput style={styles.TextInputSigIn} placeholder="Celular" placeholderTextColor="#2B337D"
+                  onChangeText={setCelular} />
               </View>
               <View style={{ padding: 10 }}>
-                <TextInput style={{ width: 217, height: 41, borderRadius: 100, backgroundColor: "#FFFFFF" }} placeholder="Senha" placeholderTextColor="#2B337D">
-                </TextInput>
+                <TextInput style={styles.TextInputSigIn} placeholder="Senha" placeholderTextColor="#2B337D"
+                  onChangeText={setSenha} />
               </View>
             </View>
 
             <View style={{ alignItems: "center" }}>
-              <TouchableOpacity style={{ backgroundColor: "#2B337D", borderRadius: 100, width: 134, height: 42, justifyContent: "center" }}>
+              <TouchableOpacity style={styles.bottomEntrar} onPress={() => { entrar() }}>
                 <Text style={{ textAlign: "center", color: "white", fontSize: 20 }}>Entrar</Text>
               </TouchableOpacity>
             </View>
 
             <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-around" }}>
-              <Switch style={{ padding: 15 }}></Switch>
+              <Switch style={{ padding: 15 }}
+                trackColor={{ false: "#767577", true: "#81b0ff" }}
+                thumbColor={isEnabled ? "#2B337D" : "#f4f3f4"}
+                onValueChange={toggleSwitch}
+                value={isEnabled} />
               <Text style={{ color: "#2B337D", fontSize: 20, padding: 15 }}>
                 Manter Conectado
-            </Text>
+              </Text>
             </View>
           </View>
 
@@ -97,6 +126,33 @@ const App: () => React$Node = () => {
 };
 
 const styles = StyleSheet.create({
+  logo: {
+    width: 200,
+    height: 200
+  },
+
+  logofont: {
+    textAlign: "center",
+    color: "#2B337D",
+    fontSize: 45,
+    fontFamily: "All Star Resort"
+  },
+
+  TextInputSigIn: {
+    width: 217,
+    height: 41,
+    borderRadius: 100,
+    backgroundColor: "#FFFFFF",
+    color: "#2B337D"
+  },
+
+  bottomEntrar: {
+    backgroundColor: "#2B337D",
+    borderRadius: 100,
+    width: 134,
+    height: 42,
+    justifyContent: "center"
+  }
 
 });
 
