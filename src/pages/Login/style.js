@@ -24,17 +24,9 @@ export default styles = StyleSheet.create({
         color: "#2B337D"
     },
 
-    bottomEntrar: {
-        backgroundColor: "#2B337D",
-        borderRadius: 100,
-        width: 134,
-        height: 42,
-        justifyContent: "center"
-    },
-
     bottomtextEntrar: {
         textAlign: "center",
-        color: "white",
+        color: "#2B337D",
         fontSize: 20
     },
 
