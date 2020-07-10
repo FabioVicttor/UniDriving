@@ -44,21 +44,6 @@ function Login({ navigation }) {
 
   }
 
-  const NeoMorph = ({ children, size, style }) => {
-    return (
-      <View
-        style={[
-          styles.inner,
-          styles.topShadow,
-          styles.bottomShadow,
-          { borderRadius: size / 2 || 40 / 2 },
-          style
-        ]}>
-        {children}
-      </View>
-    )
-  }
-
   return (
     <>
       <StatusBar barStyle="dark-content" backgroundColor="#DEE9F7" />
@@ -104,6 +89,9 @@ function Login({ navigation }) {
             </View>
 
             <View style={styles.manterconectado}>
+              <Text style={{ color: "#2B337D", fontSize: 20, padding: 15 }}>
+                Manter Conectado
+              </Text>
               <Switch
                 style={{ padding: 15 }}
                 trackColor={{ false: "#767577", true: "#81b0ff" }}
@@ -111,25 +99,22 @@ function Login({ navigation }) {
                 onValueChange={toggleSwitch}
                 value={isEnabled}
               />
-              <Text style={{ color: "#2B337D", fontSize: 20, padding: 15 }}>
-                Manter Conectado
-              </Text>
             </View>
           </View>
 
           <View style={styles.footer}>
-            <NeoMorph style={{ padding: 15 }}>
+            <View style={{ padding: 15 }}>
               <TouchableOpacity
                 onPress={() => { navigation.navigate("Cadastro") }}>
                 <Text style={styles.textfooter}>Registre-se</Text>
               </TouchableOpacity>
-            </NeoMorph>
-            <NeoMorph style={{ padding: 15 }}>
+            </View>
+            <View style={{ padding: 15 }}>
               <TouchableOpacity
                 onPress={() => { navigation.navigate("Recuperar_Acesso") }}>
                 <Text style={styles.textfooter}>Recuperar Acesso</Text>
               </TouchableOpacity>
-            </NeoMorph>
+            </View>
           </View>
 
         </View>

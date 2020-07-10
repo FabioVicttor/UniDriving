@@ -41,7 +41,7 @@ export default styles = StyleSheet.create({
     manterconectado: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-around"
+        marginLeft: '10%'
     },
 
     footer: {
@@ -52,34 +52,6 @@ export default styles = StyleSheet.create({
     textfooter: {
         color: "#2B337D",
         fontSize: 19
-    },
-
-    inner: {
-        backgroundColor: "#DEE9F7",
-        alignItems: "center",
-        justifyContent: "center",
-        borderColor: "#E2ECFD",
-        borderWidth: 1
-    },
-
-    topShadow: {
-        shadowOffset: {
-            width: -6,
-            height: -6
-        },
-        shadowOpacity: 1,
-        shadowRadius: 6,
-        shadowColor: "#FBFFFF"
-    },
-    
-    bottomShadow: {
-        shadowOffset: {
-            width: 6,
-            height: 6
-        },
-        shadowOpacity: 1,
-        shadowRadius: 6,
-        shadowColor: "#B7C4DD"
     }
 
 });
